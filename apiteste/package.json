@@ -1,0 +1,28 @@
+{
+  "name": "apiteste",
+  "version": "1.0.0",
+  "description": "teste com ap com node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "dev":"nodemon server.js"
+    },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byed784/ADS-TED1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byed784/ADS-TED1/issues"
+  },
+  "homepage": "https://github.com/byed784/ADS-TED1#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

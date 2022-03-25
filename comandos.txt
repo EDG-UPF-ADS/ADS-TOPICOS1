@@ -1,0 +1,4 @@
+rodar o banco de dados. 
+comando pra subir a API 
+	- npm run dev (dentro de apiteste) 
+
