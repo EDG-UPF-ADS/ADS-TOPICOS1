@@ -1,0 +1,45 @@
+# Obter a lista de requisição
+GET http://localhost:3000/api/requisicao
+Content-Type: application/json
+###
+
+POST http://localhost:3000/api/requisicao
+Content-Type: application/json
+
+{
+ "titulo": "Erro no PC",
+ "descricao": "PC Não Inicia",
+ "dataHoraCriada": "2022-03-25",
+ "status": "START",
+ "prazoAtendimento": "2022-03-26",
+ "Solicitante": "623e65d9f81ffe00eadf146c",
+ "TipoRequisicao": "623e65d9f81ffe00eadf146c"
+}
+###
+
+# Alterar requisição
+PUT http://localhost:3000/api/requisicao
+Content-Type: application/json
+
+{
+ "_id": "623e65d9f81ffe00eadf146c",
+ "nome": "Edgar Alterado",
+ "email": "jaqson@teste.com",
+ "celular": "54 6543 2423"
+}
+###
+
+# Excluir um requisição
+DELETE http://localhost:3000/api/requisicao/623e65d9f81ffe00eadf146c
+Content-Type: application/json
+###
+
+# Obter pelo id de requisição
+GET http://localhost:3000/api/requisicao/623e65d9f81ffe00eadf146c
+Content-Type: application/json
+###
+
+# Obter requisiçãos filtrando
+GET http://localhost:3000/api/requisicao/filtro/edgar
+Content-Type: application/json
+###

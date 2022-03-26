@@ -1,0 +1,40 @@
+# Obter a lista de Andamento
+GET http://localhost:3000/api/andamento
+Content-Type: application/json
+###
+
+POST http://localhost:3000/api/andamento
+Content-Type: application/json
+
+{
+ "dataHora": "2022-03-20",
+ "titulo": "Teste1",
+ "descricao": "Primeiro Teste",
+ "Colaborador": "623e643af81ffe00eadf1445",
+ "Atividade": "623e6677811b12489224f4ed"
+}
+###
+
+# Alterar Andamento
+PUT http://localhost:3000/api/andamento
+Content-Type: application/json
+
+{
+ "_id": "5f6cba8798eca62ccce84ba7",
+ "nome": "Jaqson alterado",
+ "email": "jaqson@teste.com",
+ "celular": "54 6543 2423"
+}
+###
+# Excluir um Andamento
+DELETE http://localhost:3000/api/andamento/5f5a96dd5e818fae8fc6e1db
+Content-Type: application/json
+###
+# Obter pelo id de Andamento
+GET http://localhost:3000/api/andamento/5f6cb80e07cee54810920f5f
+Content-Type: application/json
+###
+# Obter Andamentos filtrando
+GET http://localhost:3000/api/andamento/filtro/fulano
+Content-Type: application/json
+###

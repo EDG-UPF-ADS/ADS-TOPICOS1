@@ -1,0 +1,41 @@
+# Obter a lista de colaboradores
+GET http://localhost:3000/api/colaborador
+Content-Type: application/json
+###
+
+POST http://localhost:3000/api/colaborador
+Content-Type: application/json
+
+{
+ "nome": "Edgar de Castro Moreira Neto",
+ "email": "edgarneto784@gmail.com",
+ "senha": "SenhaTeste"
+}
+###
+
+# Alterar colaboradores
+PUT http://localhost:3000/api/colaborador
+Content-Type: application/json
+
+{
+ "_id": "623e643af81ffe00eadf1445",
+ "nome": "Edgar Alterado",
+ "email": "edgar@teste.com",
+ "celular": "54 9 9999 9999"
+}
+###
+
+# Excluir um colaborador
+DELETE http://localhost:3000/api/colaborador/623e6412f81ffe00eadf1442
+Content-Type: application/json
+###
+
+# Obter pelo id de colaborador
+GET http://localhost:3000/api/colaborador/623e643af81ffe00eadf1445
+Content-Type: application/json
+###
+
+# Obter colaboradores filtrando
+GET http://localhost:3000/api/colaborador/filtro/edgar
+Content-Type: application/json
+Colaboradores
