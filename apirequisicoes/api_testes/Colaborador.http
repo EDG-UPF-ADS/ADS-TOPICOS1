@@ -1,5 +1,5 @@
-# Obter a lista de colaboradores
-GET http://localhost:3000/api/colaborador
+# Obter a lista de usuários
+GET http://localhost:3001/api/colaborador
 Content-Type: application/json
 ###
 
@@ -7,35 +7,32 @@ POST http://localhost:3000/api/colaborador
 Content-Type: application/json
 
 {
- "nome": "Edgar de Castro Moreira Neto",
- "email": "edgarneto784@gmail.com",
- "senha": "SenhaTeste"
+ "nome": "Edgar Neto",
+ "email": "edgar@upf.br",
+ "senha": "TesteSenha"
 }
 ###
 
-# Alterar colaboradores
+# Alterar usuário
 PUT http://localhost:3000/api/colaborador
 Content-Type: application/json
 
 {
- "_id": "623e643af81ffe00eadf1445",
- "nome": "Edgar Alterado",
- "email": "edgar@teste.com",
- "celular": "54 9 9999 9999"
+ "_id": "5f6cba879ghta62ccce84ba7",
+ "nome": "Jaqson Dalbosco",
+ "email": "jaqson@teste.com",
+ "celular": "54 5437 3421"
 }
 ###
-
-# Excluir um colaborador
-DELETE http://localhost:3000/api/colaborador/623e6412f81ffe00eadf1442
+# Excluir um usuário
+DELETE http://localhost:3000/api/colaborador/5f5a96dd5e818fae8fc6e1db
 Content-Type: application/json
 ###
-
-# Obter pelo id de colaborador
-GET http://localhost:3000/api/colaborador/623e643af81ffe00eadf1445
+# Obter pelo id de usuário
+GET http://localhost:3000/api/colaborador/5f6cb80e07cee54810920f5f
 Content-Type: application/json
 ###
-
-# Obter colaboradores filtrando
-GET http://localhost:3000/api/colaborador/filtro/edgar
+# Obter usuários filtrando
+GET http://localhost:3000/api/colaborador/filtro/fulano
 Content-Type: application/json
-Colaboradores
+###

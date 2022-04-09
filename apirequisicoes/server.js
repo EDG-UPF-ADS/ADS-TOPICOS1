@@ -1,16 +1,16 @@
-console.log('Arquivo Server.JS executou com Sucesso!');
+console.log("API OK")
 
-// usar o express
 const express = require('express');
 const app = express();
-app.use(express.json()); // para tratar json
-// definir porta para a API de serviço
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
- return console.log('API executando na porta ' + port);
-})
+app.use(express.json());
 
-// usar o mongo incremento 1 
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+    return console.log("API executando na porta " + port)
+});
+
+// usar o momgo
 require("./server/banco/mongo");
 // Usar as rotas
 const routes = require('./server/routes/index');
