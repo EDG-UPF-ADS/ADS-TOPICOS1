@@ -1,4 +1,26 @@
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
+
 const ColaboradorList = (props) => {
+    const operacoesBodyTemplate = (rowData) => {
+      return (
+          <>
+            <Button
+                    onClick={() => props.editar(rowData._id)}
+                    className="p-button-raised p-button-rounded"
+                  >
+                    Editar
+                  </Button>
+                  <Button
+                    onClick={() => props.excluir(rowData._id)}
+                    className="p-button-raised p-button-rounded"
+                  >
+                    Excluir
+                  </Button>
+          </>
+      )
+    }
   return (
     <div className="App">
       <h4>Listagem de Colaboradores</h4>
@@ -12,7 +34,22 @@ const ColaboradorList = (props) => {
         Inserir
       </button>
 
-      <table className="table">
+                <DataTable value={props.colaboradores} paginator responsiveLayout="scroll"
+                    paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+                    currentPageReportTemplate="Mostrando {first} até {last} de {totalRecords}" rows={5} rowsPerPageOptions={[5,10,20]}
+                    emptyMessage="Nenhum Registro Encontrado"
+                    selectionMode='single' selection={props.colaborador}
+                    onSelectionChange={e => props.setColaborador(e.value)} dataKey="_id"
+                    
+                    >
+
+                    <Column field="nome" header="Nome" sortable filter></Column>
+                    <Column field="email" header="E-Mail" sortable filter></Column>
+                    <Column header="Operações" body={operacoesBodyTemplate}></Column>
+              
+                </DataTable>
+
+      {/* <table className="table"> 
         <thead>
           <tr>
             <th>ID</th>
@@ -52,7 +89,7 @@ const ColaboradorList = (props) => {
             </tr>
           )}
         </tbody>
-      </table>
+      </table>*/}
     </div>
   );
 };
