@@ -11,6 +11,7 @@ const ColaboradorForm = (props) => {
   };
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
+    
     props.salvar();
   }
   const [contraSenha, setContraSenha] = useState();
