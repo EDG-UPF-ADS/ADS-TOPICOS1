@@ -1,9 +1,9 @@
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, useRef } from "react";
-import ColaboradorList from "./ColaboradorList";
-import ColaboradorForm from "./ColaboradorForm";
-import ColaboradorSrv from "../../ColaboradorSrv";
+import AtividadeList from "./AtividadeList";
+import AtividadeForm from "./AtividadeForm";
+import AtividadeSrv from "../../AtividadeSrv";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
@@ -12,10 +12,11 @@ import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 
 
-function ColaboradorCon() {
-  const [colaboradores, setColaboradores] = useState([]);
-  const initialState = { id: null, nome: "", email: "", senha: "" };
-  const [colaborador, setColaborador] = useState(initialState);
+
+function AtividadeCon() {
+  const [atividades, setAtividades] = useState([]);
+  const initialState = { id: null, descricao: ""};
+  const [atividade, setAtividade] = useState(initialState);
   const [editando, setEditando] = useState(false);
   const toastRef = useRef();
 
@@ -24,11 +25,11 @@ function ColaboradorCon() {
   }, []);
 
   const onClickAtualizar = () => {
-    ColaboradorSrv.listar().then((response) => {
-        setColaboradores(response.data);
+    AtividadeSrv.listar().then((response) => {
+      setAtividades(response.data);
         toastRef.current.show({
           severity: "success",
-          summary: "Colaboradores Atualizados!",
+          summary: "Atividades Atualizadas!",
           life: 3000,
         });
       })
@@ -43,13 +44,13 @@ function ColaboradorCon() {
   };
 
   const inserir = () => {
-    setColaborador(initialState);
+    setAtividade(initialState);
     setEditando(true);
   };
 
   const salvar = () => {
-    if (colaborador._id == null) { // inclusão
-      ColaboradorSrv.incluir(colaborador)
+    if (atividade._id == null) { // inclusão
+      AtividadeSrv.incluir(atividade)
         .then((response) => {
           setEditando(false);
           onClickAtualizar();
@@ -67,7 +68,7 @@ function ColaboradorCon() {
           });
         });
     } else { // alteração
-      ColaboradorSrv.alterar(colaborador)
+      AtividadeSrv.alterar(atividade)
         .then((response) => {
           setEditando(false);
           onClickAtualizar();
@@ -92,8 +93,8 @@ function ColaboradorCon() {
   };
 
   const editar = (id) => {
-    setColaborador(
-      colaboradores.filter((colaborador) => colaborador._id == id)[0]
+    setAtividade(
+      atividades.filter((atividade) => atividade._id == id)[0]
     );
     setEditando(true);
   };
@@ -111,7 +112,7 @@ function ColaboradorCon() {
   };
 
   const excluirConfirm = (_id) => {
-    ColaboradorSrv.excluir(_id)
+    AtividadeSrv.excluir(_id)
       .then((response) => {
         onClickAtualizar();
         toastRef.current.show({
@@ -134,10 +135,10 @@ function ColaboradorCon() {
     return (
       <div>
         <ConfirmDialog />
-        <ColaboradorList
-          colaboradores={colaboradores}
-          colaborador={colaborador}
-          setColaborador={setColaborador}
+        <AtividadeList
+          atividades={atividades}
+          atividade={atividade}
+          setAtividade={setAtividade}
           onClickAtualizar={onClickAtualizar}
           inserir={inserir}
           editar={editar}
@@ -149,9 +150,9 @@ function ColaboradorCon() {
   } else {
     return (
       <div>
-        <ColaboradorForm
-          colaborador={colaborador}
-          setColaborador={setColaborador}
+        <AtividadeForm
+          atividade={atividade}
+          setAtividade={setAtividade}
           salvar={salvar}
           cancelar={cancelar}
         />
@@ -161,4 +162,4 @@ function ColaboradorCon() {
   }
 
 }
-export default ColaboradorCon;
+export default AtividadeCon;

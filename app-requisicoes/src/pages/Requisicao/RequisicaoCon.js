@@ -1,8 +1,8 @@
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, useRef } from "react";
-import ColaboradorList from "./ColaboradorList";
-import ColaboradorForm from "./ColaboradorForm";
+import RequisicaoList from "./RequisicaoList";
+import RequisicaoForm from "./RequisicaoForm";
 import ColaboradorSrv from "../../ColaboradorSrv";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -12,10 +12,10 @@ import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 
 
-function ColaboradorCon() {
-  const [colaboradores, setColaboradores] = useState([]);
+function RequisicaoCon() {
+  const [requisicoes, setRequisicoes] = useState([]);
   const initialState = { id: null, nome: "", email: "", senha: "" };
-  const [colaborador, setColaborador] = useState(initialState);
+  const [requisicao, setRequisicao] = useState(initialState);
   const [editando, setEditando] = useState(false);
   const toastRef = useRef();
 
@@ -25,7 +25,7 @@ function ColaboradorCon() {
 
   const onClickAtualizar = () => {
     ColaboradorSrv.listar().then((response) => {
-        setColaboradores(response.data);
+      setRequisicoes(response.data);
         toastRef.current.show({
           severity: "success",
           summary: "Colaboradores Atualizados!",
@@ -43,13 +43,13 @@ function ColaboradorCon() {
   };
 
   const inserir = () => {
-    setColaborador(initialState);
+    setRequisicao(initialState);
     setEditando(true);
   };
 
   const salvar = () => {
-    if (colaborador._id == null) { // inclusão
-      ColaboradorSrv.incluir(colaborador)
+    if (requisicao._id == null) { // inclusão
+      ColaboradorSrv.incluir(requisicao)
         .then((response) => {
           setEditando(false);
           onClickAtualizar();
@@ -67,7 +67,7 @@ function ColaboradorCon() {
           });
         });
     } else { // alteração
-      ColaboradorSrv.alterar(colaborador)
+      ColaboradorSrv.alterar(requisicao)
         .then((response) => {
           setEditando(false);
           onClickAtualizar();
@@ -92,8 +92,8 @@ function ColaboradorCon() {
   };
 
   const editar = (id) => {
-    setColaborador(
-      colaboradores.filter((colaborador) => colaborador._id == id)[0]
+    setRequisicao(
+      requisicoes.filter((requisicao) => requisicao._id == id)[0]
     );
     setEditando(true);
   };
@@ -134,10 +134,10 @@ function ColaboradorCon() {
     return (
       <div>
         <ConfirmDialog />
-        <ColaboradorList
-          colaboradores={colaboradores}
-          colaborador={colaborador}
-          setColaborador={setColaborador}
+        <RequisicaoList
+          requisicoes={requisicoes}
+          requisicao={requisicao}
+          setRequisicao={setRequisicao}
           onClickAtualizar={onClickAtualizar}
           inserir={inserir}
           editar={editar}
@@ -149,9 +149,9 @@ function ColaboradorCon() {
   } else {
     return (
       <div>
-        <ColaboradorForm
-          colaborador={colaborador}
-          setColaborador={setColaborador}
+        <RequisicaoForm
+          requisicao={requisicao}
+          setRequisicao={setRequisicao}
           salvar={salvar}
           cancelar={cancelar}
         />
@@ -161,4 +161,4 @@ function ColaboradorCon() {
   }
 
 }
-export default ColaboradorCon;
+export default RequisicaoCon;

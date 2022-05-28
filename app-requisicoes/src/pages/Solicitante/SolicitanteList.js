@@ -4,7 +4,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 
-const ColaboradorList = (props) => {
+const SolicitanteList = (props) => {
 
   const OperacoesTemplate = (rowData) => {
     return (
@@ -27,7 +27,7 @@ const ColaboradorList = (props) => {
 
   return (
     <div className="App">
-      <h4>Listagem de Colaboradores</h4>
+      <h4>Listagem de Solicitantes</h4>
       <button
         className="btn btn-primary btn-sm"
         onClick={props.onClickAtualizar}
@@ -38,11 +38,11 @@ const ColaboradorList = (props) => {
         Inserir
       </button>
 
-      <DataTable value={props.colaboradores} paginator responsiveLayout="scroll"
+      <DataTable value={props.solicitantes} paginator responsiveLayout="scroll"
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={5} rowsPerPageOptions={[5, 20, 50]} 
-        selectionMode="single" selection={props.colaborador} 
-        onSelectionChange={e => props.setColaborador(e.value)} dataKey="_id"
+        selectionMode="single" selection={props.solicitante} 
+        onSelectionChange={e => props.setSolicitante(e.value)} dataKey="_id"
         >
         {/* <Column field="_id" header="Id" sortable ></Column> */}
         <Column field="nome" header="Nome" sortable filter ></Column>
@@ -53,4 +53,4 @@ const ColaboradorList = (props) => {
     </div>
   );
 };
-export default ColaboradorList;
+export default SolicitanteList;
